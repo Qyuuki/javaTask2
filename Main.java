@@ -72,7 +72,7 @@ public class Main {
 		}
 	}
 
-	public static String jugement(int i) {
+	public static String judgement(int i) {
 		if (i == 0) {
 			return "偽";
 		} else if (i == 1) {
