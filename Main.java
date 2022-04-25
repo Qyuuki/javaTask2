@@ -35,25 +35,25 @@ public class Main {
 		System.out.println("------------");
 
 		// 4:「引数が0なら偽。引数が1なら真」とコンソール画面に表示してみよう。
-		int bit = new Random().nextInt(2);
-		String bitAnswer = judgement(bit);
-		String bitException = "Error: もう一度繰り返します。";
 		int count = 1;
-		while (bitException.equals(bitAnswer)) {
+		while (count <= 3) {
 			count++;
-			if (count == 3) {
-				System.out.println("Error: 正しく処理できませんでした。強制終了します。");
-				System.exit(0);
+			try {
+				int input = new Random().nextInt(2);
+				String inputAnswer = judgement(input);
+				count = 4;
+				System.out.println(inputAnswer);
+
+				System.out.println("------------");
+			} catch (Exception e) {
+				if (count == 3) {
+					System.out.println("Error: 正しく処理できませんでした。強制終了します。");
+					System.exit(1);
+				}
+				System.out.println("Error: もう一度繰り返します。");
+				System.out.println("------------");
 			}
-			System.out.println(bitException);
-			System.out.println("------------");
-			bit = new Random().nextInt(2);
-			bitAnswer = judgement(bit);
 		}
-
-		System.out.println(bitAnswer);
-
-		System.out.println("------------");
 
 		// 5:String型のListかMapを作成して、その内容をコンソール画面に表示してみよう。
 		List<String> homeworkList = new ArrayList<String>();
@@ -72,12 +72,12 @@ public class Main {
 		}
 	}
 
-	public static String judgement(int i) {
+	public static String judgement(int i) throws Exception {
 		if (i == 0) {
 			return "偽";
 		} else if (i == 1) {
 			return "真";
 		}
-		return "Error: もう一度繰り返します。";
+		throw new Exception("Error: もう一度繰り返します。");
 	}
 }
